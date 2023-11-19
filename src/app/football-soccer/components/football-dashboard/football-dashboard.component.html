@@ -1,0 +1,5 @@
+<app-menu (onReadyFootballData)="getData($event)"></app-menu>
+<div *ngIf="footballData$">
+  <app-standings [data$]="footballData$"></app-standings>
+</div>
+

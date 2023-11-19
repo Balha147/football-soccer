@@ -1,0 +1,16 @@
+<div *ngIf="resultDetailsData$ | async as details">
+  <ul>
+    <li *ngFor="let row of details" class="team">
+      <div class="team-details">
+        <img [src]="row.teams.home.logo" alt="Logo" class="team-logo" />
+        <p class="team-name">{{ row.teams.home.name }}</p>
+      </div>
+      <div class="score">{{ row.goals.home }} - {{ row.goals.away }}</div>
+      <div class="team-details">
+        <p class="team-name">{{ row.teams.away.name }}</p>
+        <img [src]="row.teams.away.logo" alt="Logo" class="team-logo" />
+      </div>
+    </li>
+  </ul>
+  <button (click)="goBackToDashboard()">Back</button>
+</div>
