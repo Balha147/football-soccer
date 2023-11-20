@@ -1,4 +1,5 @@
-<div *ngIf="resultDetailsData$ | async as details">
+<ng-container *ngIf="resultDetailsData$ | async as details">
+  <ng-container *ngIf="details.length > 0; else errorTemplate">
   <ul>
     <li *ngFor="let row of details" class="team">
       <div class="team-details">
@@ -13,4 +14,8 @@
     </li>
   </ul>
   <button (click)="goBackToDashboard()">Back</button>
-</div>
+</ng-container>
+
+<ng-template #errorTemplate>
+  <p>Sorry, Error occurred</p>
+</ng-template>

@@ -1,9 +1,6 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { LowerCaseFirstLetterPipe } from '../../pipes/lowerCaseFirstLetter.pipe';
-import { Observable } from 'rxjs';
-import { FootballSoccerModel } from '../../models/football.model';
-import { FootballSoccerService } from '../../services/football-soccer.service';
 import { LEAGUE_HEADER_ITEMS } from '../../config/league-items.config';
 import { LeagueItemModel } from '../../models/league-item.model';
 
@@ -14,30 +11,18 @@ import { LeagueItemModel } from '../../models/league-item.model';
   styleUrls: ['./menu.component.scss'],
   imports: [NgFor, LowerCaseFirstLetterPipe],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
   leagueItems = LEAGUE_HEADER_ITEMS;
 
   @Output()
-  onReadyFootballData: EventEmitter<Observable<FootballSoccerModel>> = new EventEmitter<Observable<FootballSoccerModel>>();
+  onReadyLeagueId: EventEmitter<number> = new EventEmitter<number>();
 
-  private footballService = inject(FootballSoccerService);
+  selectCountry(selectLeague: LeagueItemModel): void {
 
-  ngOnInit(): void {
-    const leagueId = this.footballService.getSelectedLeagueId() ?? 39;
-    this.loadData(leagueId);
-  }
-
-  selectCountry(selectItem: LeagueItemModel): void {
     this.leagueItems.forEach((item: LeagueItemModel) => {
-      item.isSelected = item === selectItem;
+      item.isSelected = item === selectLeague;
     });
-    this.footballService.setSelectedLeagueId(selectItem.id);
-    this.loadData(selectItem.id);
-  }
-
-  private loadData(countryId: number): void {
-    const data$ = this.footballService.getStandings(countryId);
-    this.onReadyFootballData.emit(data$);
+    this.onReadyLeagueId.emit(selectLeague.id);
   }
 
 }

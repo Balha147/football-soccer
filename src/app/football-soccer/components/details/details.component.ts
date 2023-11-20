@@ -6,13 +6,13 @@ import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-result-details',
+  selector: 'app-details',
   standalone: true,
-  templateUrl: './result-details.component.html',
-  styleUrls: ['./result-details.component.scss'],
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss'],
   imports: [NgIf, NgFor, AsyncPipe, JsonPipe],
 })
-export class ResultDetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit {
 
   @Input() id!: number;
 

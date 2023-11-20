@@ -15,10 +15,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // StoreModule.forRoot({ standings: standingsReducer }),
-    // StoreDevtoolsModule.instrument({
-    //   maxAge: 25, // conserve les 25 dernières actions
-    // }),
   ],
   providers: [],
   bootstrap: [AppComponent]

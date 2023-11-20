@@ -1,0 +1,12 @@
+<app-menu (onReadyLeagueId)="onLeagueSelected($event)"></app-menu>
+
+<ng-container *ngIf="dataApi$ | async as data">
+  <ng-container *ngIf="data.length > 0; else errorTemplate">
+    <app-league-standings [data]="dataApi$"></app-league-standings>
+  </ng-container>
+</ng-container>
+
+
+<ng-template #errorTemplate>
+  <p>Sorry, Error occurred</p>
+</ng-template>

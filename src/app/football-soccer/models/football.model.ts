@@ -10,10 +10,11 @@ export interface FootballSoccerModel {
     current: number,
     total: number,
   },
-  response: DatailsModel[];
+  response: responseApiModel[];
 }
 
-export interface DatailsModel {
+// responseApiModel
+export interface responseApiModel {
   league: LeagueModel;
 }
 export interface LeagueModel {

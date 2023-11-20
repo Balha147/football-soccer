@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { FootballDashboardComponent } from './components/football-dashboard/football-dashboard.component';
-import { ResultDetailsComponent } from './components/result-details/result-details.component';
+import { HomeComponent } from './components/home/home.component';
+import { DetailsComponent } from './components/details/details.component';
 
 const FOOTBALL_ROUTES: Routes = [
   {
     path: '',
-    component: FootballDashboardComponent,
+    component: HomeComponent,
   },
   {
-    path: 'result-details/:id',
-    component: ResultDetailsComponent,
+    path: 'details/:id',
+    component: DetailsComponent,
   },
 
 ];

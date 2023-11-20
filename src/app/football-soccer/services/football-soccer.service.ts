@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable, inject} from '@angular/core';
-import {Observable, catchError, tap } from 'rxjs';
+import {EMPTY, Observable, catchError, tap } from 'rxjs';
 import {FootballSoccerModel} from '../models/football.model';
 import {BASE_URL, HTTP_OPTIONS} from '../config/api-end-point.config';
 import { CacheService } from './cache.service';
@@ -18,15 +18,15 @@ export class FootballSoccerService {
 
     private resultCacheKeyPrefix = 'result-data-service-cache-';
 
-    private selectedLeagueId!: number;
+    private selectedPreviousLeagueId!: number;
 
 
-    setSelectedLeagueId(leagueId: number): void {
-      this.selectedLeagueId = leagueId;
+    setSelectedPreviousLeagueId(leagueId: number): void {
+      this.selectedPreviousLeagueId = leagueId;
     }
 
-    getSelectedLeagueId(): number {
-      return this.selectedLeagueId;
+    getSelectedPreviousLeagueId(): number {
+      return this.selectedPreviousLeagueId;
     }
 
 
@@ -88,9 +88,15 @@ export class FootballSoccerService {
     private cacheAndReturnData<T>(data$: Observable<T>, cacheKey: string): Observable<T> {
       return data$.pipe(
         tap((data: T) => {
-          this.cacheService.set(cacheKey, data);
+          if (this.isValidData(data)) {
+            this.cacheService.set(cacheKey, data);
+          }
         })
       );
+    }
+
+    private isValidData(data: any): boolean {
+      return data.results > 0;
     }
 
 }
