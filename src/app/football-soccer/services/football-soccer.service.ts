@@ -18,15 +18,16 @@ export class FootballSoccerService {
 
     private resultCacheKeyPrefix = 'result-data-service-cache-';
 
-    private selectedPreviousLeagueId!: number;
+    private _selectedPreviousLeagueId!: number;
 
-
-    setSelectedPreviousLeagueId(leagueId: number): void {
-      this.selectedPreviousLeagueId = leagueId;
+    // Getter
+    get selectedPreviousLeagueId(): number {
+      return this._selectedPreviousLeagueId;
     }
 
-    getSelectedPreviousLeagueId(): number {
-      return this.selectedPreviousLeagueId;
+    // Setter
+    set selectedPreviousLeagueId(leagueId: number) {
+      this._selectedPreviousLeagueId = leagueId;
     }
 
 
