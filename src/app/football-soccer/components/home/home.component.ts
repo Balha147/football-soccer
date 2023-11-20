@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     this.loadData();
   }
 
-  onLeagueSelected(event: any): void {
+  onLeagueSelected(event: number): void {
     this.selectedCountryId = event;
     this.footballService.setSelectedPreviousLeagueId(this.selectedCountryId);
     this.loadData();
