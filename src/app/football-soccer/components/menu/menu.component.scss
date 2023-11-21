@@ -17,5 +17,12 @@ li {
 }
 
 a {
+  color: black;
+  text-decoration: none;
   cursor: pointer;
+}
+
+a.selected {
+  color: blue;
+  text-decoration: underline;
 }
