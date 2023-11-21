@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit {
 
   getResultData(): void {
     if (this.id) {
-      this.resultDetailsData$ = this.footballService.getResultData(this.id).pipe(
+      this.resultDetailsData$ = this.footballService.getDetails(this.id).pipe(
         map((data: ResultGamesModel) => data.response)
       );
     }

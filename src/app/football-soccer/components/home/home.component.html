@@ -1,4 +1,4 @@
-<app-menu (onReadyLeagueId)="onLeagueSelected($event)"></app-menu>
+<app-menu (onReadySelectCountry)="onLeagueSelected($event)"></app-menu>
 
 <ng-container *ngIf="dataApi$ | async as data">
   <ng-container *ngIf="data.length > 0; else errorTemplate">

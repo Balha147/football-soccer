@@ -18,14 +18,14 @@ export class HomeComponent implements OnInit {
 
   private footballService = inject(FootballSoccerService);
 
-  selectedCountryId =  this.footballService.selectedPreviousLeagueId?? 39;
+  selectedCountryId =  this.footballService.selectedPreviousLeagueId ?? 39;
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  onLeagueSelected(event: number): void {
-    this.selectedCountryId = event;
+  onLeagueSelected(countryId: number): void {
+    this.selectedCountryId = countryId;
     this.footballService.selectedPreviousLeagueId = this.selectedCountryId;
     this.loadData();
   }

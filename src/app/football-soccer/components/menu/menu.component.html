@@ -1,9 +1,11 @@
 <nav class="header">
   <ul>
-    <li *ngFor="let item of leagueItems" [class.selected]="item.isSelected">
+    <li *ngFor="let item of leagueItems">
       <a
-        [id]="item.name | lowerCaseFirstLetter: 'Select'"
-        (click)="selectCountry(item)"
+        [id]="item.name.toLowerCase() + 'Select'"
+        (click)="onClickCountry(item)"
+        appClickHighlight
+        [selectedId]="item.name.toLowerCase() + 'Select'"
         >{{ item.name }}
       </a>
     </li>
