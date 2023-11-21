@@ -3,7 +3,7 @@
     <li *ngFor="let item of leagueItems">
       <a
         [id]="item.name.toLowerCase() + 'Select'"
-        (click)="onClickCountry(item)"
+        (click)="onClickCountry(item.id)"
         [ngClass]="{'selected': item.id === selectedLeagueId}"
         >{{ item.name }}
       </a>

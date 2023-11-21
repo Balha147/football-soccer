@@ -5,6 +5,7 @@ import { FootballSoccerModel, responseApiModel } from '../../models/football.mod
 import { AsyncPipe, NgIf } from '@angular/common';
 import { LeagueStandingsComponent } from '../league-standings/league-standings.component';
 import { FootballSoccerService } from '../../services/football-soccer.service';
+import { LEAGUE_HEADER_ITEMS } from '../../config/league-items.config';
 
 @Component({
   selector: 'app-home',
@@ -18,14 +19,14 @@ export class HomeComponent implements OnInit {
 
   private footballService = inject(FootballSoccerService);
 
-  selectedCountryId =  this.footballService.selectedPreviousLeagueId ?? 39;
+  selectedCountryId =  this.footballService.selectedPreviousLeagueId ?? LEAGUE_HEADER_ITEMS[0].id;
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  onLeagueSelected(countryId: number): void {
-    this.selectedCountryId = countryId;
+  onLeagueSelected(leagueId: number): void {
+    this.selectedCountryId = leagueId;
     this.footballService.selectedPreviousLeagueId = this.selectedCountryId;
     this.loadData();
   }
