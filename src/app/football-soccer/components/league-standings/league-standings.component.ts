@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { responseApiModel } from '../../models/football.model';
-import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './league-standings.component.html',
   styleUrls: ['./league-standings.component.scss'],
-  imports: [NgIf, NgFor, AsyncPipe, JsonPipe],
+  imports: [NgIf, NgFor, AsyncPipe],
 })
 export class LeagueStandingsComponent {
   @Input() data!: Observable<responseApiModel[]>;
